@@ -170,8 +170,7 @@ img {
 .hero {
   padding: 88px 0 82px;
   background:
-    linear-gradient(90deg, rgba(9, 24, 41, 0.96), rgba(13, 34, 56, 0.80)),
-    radial-gradient(circle at 72% 40%, rgba(53, 207, 227, 0.14), transparent 34%);
+    transparent;
   border-bottom: 1px solid var(--border);
 }
 
@@ -328,7 +327,7 @@ img {
 
 .dark-section {
   background:
-    linear-gradient(180deg, rgba(17, 40, 65, 0.82), rgba(11, 27, 46, 0.88));
+    transparent;
   border-top: 1px solid rgba(255,255,255,0.025);
   border-bottom: 1px solid var(--border);
 }
@@ -568,8 +567,7 @@ details p {
 .product-page {
   padding: 64px 0 80px !important;
   background:
-    radial-gradient(circle at 12% 16%, rgba(60, 130, 203, 0.16), transparent 30%),
-    radial-gradient(circle at 88% 10%, rgba(82, 91, 200, 0.14), transparent 28%);
+    transparent;
 }
 
 .product-layout {
