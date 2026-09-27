@@ -37,17 +37,12 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--text);
-  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+  color: #f5f7ff;
   background:
-    radial-gradient(circle at 18% 12%, rgba(52, 116, 186, 0.25), transparent 32%),
-    radial-gradient(circle at 86% 18%, rgba(67, 87, 190, 0.20), transparent 30%),
-    radial-gradient(circle at 50% 85%, rgba(24, 86, 144, 0.20), transparent 38%),
-    linear-gradient(135deg, #0a1524 0%, #10243b 42%, #0c1c30 100%);
-  background-attachment: fixed;
-  overflow-x: hidden;
+    linear-gradient(rgba(6, 12, 24, 0.72), rgba(6, 12, 24, 0.82)),
+    url("images/site-bg.png") center center / cover no-repeat fixed;
+  background-color: #08111f;
 }
 
 /* Subtle CSS-only texture */
