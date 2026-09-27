@@ -221,29 +221,6 @@
         </p>
 
 
-        <!-- COLOR TYPE -->
-
-        <div class="option-group">
-
-          <label for="colorType">
-            Holder Color Type
-          </label>
-
-          <select id="colorType" onchange="updatePrice()">
-
-            <option value="standard">
-              Standard Color — $10
-            </option>
-
-            <option value="specialty">
-              Specialty Color — $12
-            </option>
-
-          </select>
-
-        </div>
-
-
         <!-- HOLDER COLOR -->
 
         <div class="option-group">
@@ -252,11 +229,80 @@
             Holder Color
           </label>
 
-          <input
-            id="holderColor"
-            type="text"
-            placeholder="Example: Black, Red, Galaxy Green, Dual Color Red/Blue"
-          >
+          <select id="holderColor" onchange="updatePrice()">
+            <option value="">Choose a color</option>
+
+            <optgroup label="Basic — $10">
+              <option value="Jade White" data-upcharge="0">Jade White</option>
+              <option value="Blue Gray" data-upcharge="0">Blue Gray</option>
+              <option value="Orange" data-upcharge="0">Orange</option>
+              <option value="Black" data-upcharge="0">Black</option>
+              <option value="Red" data-upcharge="0">Red</option>
+              <option value="Purple" data-upcharge="0">Purple</option>
+              <option value="Bambu Green" data-upcharge="0">Bambu Green</option>
+              <option value="Mistletoe Green" data-upcharge="0">Mistletoe Green</option>
+              <option value="Bronze" data-upcharge="0">Bronze</option>
+              <option value="Sunflower Yellow" data-upcharge="0">Sunflower Yellow</option>
+              <option value="Pumpkin Orange" data-upcharge="0">Pumpkin Orange</option>
+              <option value="Maroon Red" data-upcharge="0">Maroon Red</option>
+              <option value="Cocoa Brown" data-upcharge="0">Cocoa Brown</option>
+              <option value="Gold" data-upcharge="0">Gold</option>
+              <option value="Blue" data-upcharge="0">Blue</option>
+            </optgroup>
+
+            <optgroup label="Matte — $10">
+              <option value="Latte Brown Matte" data-upcharge="0">Latte Brown</option>
+              <option value="Ice Blue Matte" data-upcharge="0">Ice Blue</option>
+              <option value="Sakura Pink Matte" data-upcharge="0">Sakura Pink</option>
+              <option value="Lilac Purple Matte" data-upcharge="0">Lilac Purple</option>
+              <option value="Dark Blue Matte" data-upcharge="0">Dark Blue</option>
+              <option value="Dark Green Matte" data-upcharge="0">Dark Green</option>
+              <option value="Ash Gray Matte" data-upcharge="0">Ash Gray</option>
+              <option value="Nardo Gray Matte" data-upcharge="0">Nardo Gray</option>
+            </optgroup>
+
+            <optgroup label="Galaxy — $12">
+              <option value="Nebula Galaxy" data-upcharge="2">Nebula</option>
+            </optgroup>
+
+            <optgroup label="Metal — $12">
+              <option value="Iron Gray Metallic" data-upcharge="2">Iron Gray Metallic</option>
+            </optgroup>
+
+            <optgroup label="Silk Multi-Color — $12">
+              <option value="Midnight Blaze Blue-Red" data-upcharge="2">Midnight Blaze (Blue-Red)</option>
+              <option value="Mystic Magenta Purple-Green" data-upcharge="2">Mystic Magenta (Purple-Green)</option>
+            </optgroup>
+
+            <optgroup label="Silk+ — $12">
+              <option value="Titan Gray Silk" data-upcharge="2">Titan Gray</option>
+              <option value="Gold Silk" data-upcharge="2">Gold</option>
+              <option value="Candy Red Silk" data-upcharge="2">Candy Red</option>
+              <option value="Purple Silk" data-upcharge="2">Purple</option>
+              <option value="Pink Silk" data-upcharge="2">Pink</option>
+              <option value="Blue Silk" data-upcharge="2">Blue</option>
+              <option value="Candy Green Silk" data-upcharge="2">Candy Green</option>
+              <option value="Rose Gold Silk" data-upcharge="2">Rose Gold</option>
+              <option value="Mint Silk" data-upcharge="2">Mint</option>
+              <option value="Champagne Silk" data-upcharge="2">Champagne</option>
+            </optgroup>
+
+            <optgroup label="Translucent — $12">
+              <option value="Blue Translucent" data-upcharge="2">Blue</option>
+              <option value="Red Translucent" data-upcharge="2">Red</option>
+              <option value="Light Jade Translucent" data-upcharge="2">Light Jade</option>
+              <option value="Mellow Yellow Translucent" data-upcharge="2">Mellow Yellow</option>
+              <option value="Lavender Translucent" data-upcharge="2">Lavender</option>
+            </optgroup>
+
+            <optgroup label="Wood — $12">
+              <option value="Classic Birch Wood" data-upcharge="2">Classic Birch</option>
+              <option value="Clay Brown Wood" data-upcharge="2">Clay Brown</option>
+              <option value="Black Walnut Wood" data-upcharge="2">Black Walnut</option>
+              <option value="Ochre Yellow Wood" data-upcharge="2">Ochre Yellow</option>
+            </optgroup>
+
+          </select>
 
         </div>
 
@@ -331,6 +377,7 @@
               min="1"
               value="1"
               onchange="updatePrice()"
+              oninput="updatePrice()"
             >
 
           </div>
@@ -402,7 +449,7 @@
         <div class="benefit">
           <h3>Specialty Filaments</h3>
           <p>
-            Galaxy, shiny, dual-color and translucent options are available.
+            Galaxy, metallic, silk, translucent, multi-color, and wood options are available.
           </p>
         </div>
 
@@ -468,14 +515,19 @@ function toggleName() {
 
 function calculateUnitPrice() {
 
-  const colorType =
-    document.getElementById("colorType").value;
+  const holderColor =
+    document.getElementById("holderColor");
+
+  const selectedOption =
+    holderColor.options[holderColor.selectedIndex];
+
+  const colorUpcharge =
+    parseFloat(selectedOption.dataset.upcharge || 0);
 
   const customName =
     document.getElementById("customNameOption").value;
 
-  let price =
-    colorType === "specialty" ? 12 : 10;
+  let price = 10 + colorUpcharge;
 
   if (customName === "yes") {
     price += 1;
@@ -490,7 +542,7 @@ function updatePrice() {
   const unitPrice = calculateUnitPrice();
 
   const quantity =
-    parseInt(document.getElementById("quantity").value) || 1;
+    Math.max(1, parseInt(document.getElementById("quantity").value) || 1);
 
   const total =
     unitPrice * quantity;
@@ -503,7 +555,7 @@ function updatePrice() {
 function prepareOrder() {
 
   const holderColor =
-    document.getElementById("holderColor").value.trim();
+    document.getElementById("holderColor").value;
 
   const letterColor =
     document.getElementById("letterColor").value.trim();
@@ -518,7 +570,7 @@ function prepareOrder() {
   if (!holderColor || !letterColor) {
 
     alert(
-      "Please choose a holder color and a letter/number color."
+      "Please choose a holder color and enter a letter/number color."
     );
 
     return;
