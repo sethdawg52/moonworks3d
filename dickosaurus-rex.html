@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dickosaurus Rex | MoonWorks 3D</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .product-page {
+      padding: 70px 0;
+    }
+
+    .product-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .product-placeholder {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--graphite);
+      color: var(--gray);
+      padding: 30px;
+    }
+
+    .product-details h1 {
+      font-size: 2.7rem;
+      margin: 0 0 8px;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--cyan);
+      margin: 15px 0;
+    }
+
+    .product-description {
+      color: var(--gray);
+    }
+
+    .option-group {
+      margin-top: 22px;
+    }
+
+    .option-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .option-group select,
+    .option-group input {
+      width: 100%;
+      padding: 12px;
+      background: var(--graphite);
+      color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .quantity-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .quantity-row input {
+      width: 80px;
+    }
+
+    .product-note {
+      margin-top: 22px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--gray);
+      background: var(--graphite);
+    }
+
+    .product-info-section {
+      margin-top: 60px;
+    }
+
+    @media (max-width: 800px) {
+      .product-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+
+    <a href="index.html" class="logo">
+      MoonWorks <span>3D</span>
+    </a>
+
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html#custom">Custom Prints</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <a href="shop.html" class="nav-button">
+      Shop
+    </a>
+
+  </div>
+</header>
+
+
+<main class="product-page">
+
+  <div class="container">
+
+    <div class="product-layout">
+
+      <div class="product-placeholder">
+        <div>
+          <strong>Product photos coming soon</strong>
+          <p>We can add your Dickosaurus Rex photos here when you upload them.</p>
+        </div>
+      </div>
+
+
+      <div class="product-details">
+
+        <p class="eyebrow">
+          NOVELTY PRINTS
+        </p>
+
+        <h1>
+          Dickosaurus Rex
+        </h1>
+
+        <div class="price" id="price">
+          $5.00
+        </div>
+
+        <p class="product-description">
+          A ridiculous prehistoric novelty print available in three sizes
+          and your choice of MoonWorks 3D filament color.
+        </p>
+
+
+        <div class="option-group">
+
+          <label for="size">
+            Size
+          </label>
+
+          <select id="size" onchange="updatePrice()">
+            <option value="6" data-base="5" data-specialty-upcharge="1">
+              6 cm tall — $5
+            </option>
+
+            <option value="12" data-base="10" data-specialty-upcharge="2">
+              12 cm tall — $10
+            </option>
+
+            <option value="18" data-base="15" data-specialty-upcharge="3">
+              18 cm tall — $15
+            </option>
+          </select>
+
+        </div>
+
+
+        <div class="option-group">
+
+          <label for="color">
+            Color
+          </label>
+
+          <select id="color" onchange="updatePrice()">
+            <option value="">Choose a color</option>
+
+            <optgroup label="Basic">
+              <option value="Jade White" data-specialty="0">Jade White</option>
+              <option value="Blue Gray" data-specialty="0">Blue Gray</option>
+              <option value="Orange" data-specialty="0">Orange</option>
+              <option value="Black" data-specialty="0">Black</option>
+              <option value="Red" data-specialty="0">Red</option>
+              <option value="Purple" data-specialty="0">Purple</option>
+              <option value="Bambu Green" data-specialty="0">Bambu Green</option>
+              <option value="Mistletoe Green" data-specialty="0">Mistletoe Green</option>
+              <option value="Bronze" data-specialty="0">Bronze</option>
+              <option value="Sunflower Yellow" data-specialty="0">Sunflower Yellow</option>
+              <option value="Pumpkin Orange" data-specialty="0">Pumpkin Orange</option>
+              <option value="Maroon Red" data-specialty="0">Maroon Red</option>
+              <option value="Cocoa Brown" data-specialty="0">Cocoa Brown</option>
+              <option value="Gold" data-specialty="0">Gold</option>
+              <option value="Blue" data-specialty="0">Blue</option>
+            </optgroup>
+
+            <optgroup label="Matte">
+              <option value="Latte Brown Matte" data-specialty="0">Latte Brown</option>
+              <option value="Ice Blue Matte" data-specialty="0">Ice Blue</option>
+              <option value="Sakura Pink Matte" data-specialty="0">Sakura Pink</option>
+              <option value="Lilac Purple Matte" data-specialty="0">Lilac Purple</option>
+              <option value="Dark Blue Matte" data-specialty="0">Dark Blue</option>
+              <option value="Dark Green Matte" data-specialty="0">Dark Green</option>
+              <option value="Ash Gray Matte" data-specialty="0">Ash Gray</option>
+              <option value="Nardo Gray Matte" data-specialty="0">Nardo Gray</option>
+            </optgroup>
+
+            <optgroup label="Galaxy — Specialty">
+              <option value="Nebula Galaxy" data-specialty="1">Nebula</option>
+            </optgroup>
+
+            <optgroup label="Metal — Specialty">
+              <option value="Iron Gray Metallic" data-specialty="1">Iron Gray Metallic</option>
+            </optgroup>
+
+            <optgroup label="Silk Multi-Color — Specialty">
+              <option value="Midnight Blaze Blue-Red" data-specialty="1">Midnight Blaze (Blue-Red)</option>
+              <option value="Mystic Magenta Purple-Green" data-specialty="1">Mystic Magenta (Purple-Green)</option>
+            </optgroup>
+
+            <optgroup label="Silk+ — Specialty">
+              <option value="Titan Gray Silk" data-specialty="1">Titan Gray</option>
+              <option value="Gold Silk" data-specialty="1">Gold</option>
+              <option value="Candy Red Silk" data-specialty="1">Candy Red</option>
+              <option value="Purple Silk" data-specialty="1">Purple</option>
+              <option value="Pink Silk" data-specialty="1">Pink</option>
+              <option value="Blue Silk" data-specialty="1">Blue</option>
+              <option value="Candy Green Silk" data-specialty="1">Candy Green</option>
+              <option value="Rose Gold Silk" data-specialty="1">Rose Gold</option>
+              <option value="Mint Silk" data-specialty="1">Mint</option>
+              <option value="Champagne Silk" data-specialty="1">Champagne</option>
+            </optgroup>
+
+            <optgroup label="Translucent — Specialty">
+              <option value="Blue Translucent" data-specialty="1">Blue</option>
+              <option value="Red Translucent" data-specialty="1">Red</option>
+              <option value="Light Jade Translucent" data-specialty="1">Light Jade</option>
+              <option value="Mellow Yellow Translucent" data-specialty="1">Mellow Yellow</option>
+              <option value="Lavender Translucent" data-specialty="1">Lavender</option>
+            </optgroup>
+
+            <optgroup label="Wood — Specialty">
+              <option value="Classic Birch Wood" data-specialty="1">Classic Birch</option>
+              <option value="Clay Brown Wood" data-specialty="1">Clay Brown</option>
+              <option value="Black Walnut Wood" data-specialty="1">Black Walnut</option>
+              <option value="Ochre Yellow Wood" data-specialty="1">Ochre Yellow</option>
+            </optgroup>
+
+          </select>
+
+        </div>
+
+
+        <div class="option-group">
+
+          <label for="quantity">
+            Quantity
+          </label>
+
+          <div class="quantity-row">
+
+            <input
+              id="quantity"
+              type="number"
+              min="1"
+              value="1"
+              onchange="updatePrice()"
+              oninput="updatePrice()"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div style="margin-top:30px;">
+
+          <button
+            class="button primary"
+            style="border:none; cursor:pointer;"
+            onclick="prepareOrder()"
+          >
+            Add to Cart
+          </button>
+
+        </div>
+
+
+        <div class="product-note">
+
+          <strong>Specialty filament pricing</strong>
+          <br>
+          Specialty colors add $1 for the 6 cm size, $2 for the 12 cm size,
+          and $3 for the 18 cm size.
+
+        </div>
+
+        <div class="product-note">
+
+          <strong>Shipping</strong>
+          <br>
+          Calculated at checkout. Ships via USPS within
+          the contiguous United States.
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <section class="product-info-section">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          PRODUCT DETAILS
+        </p>
+
+        <h2>
+          Pick Your Rex
+        </h2>
+
+      </div>
+
+      <div class="benefit-grid">
+
+        <div class="benefit">
+          <h3>Three Sizes</h3>
+          <p>
+            Choose from 6 cm, 12 cm, or 18 cm tall.
+          </p>
+        </div>
+
+        <div class="benefit">
+          <h3>Choose Your Color</h3>
+          <p>
+            Available in the same MoonWorks 3D filament lineup as the Ribbon Sorter.
+          </p>
+        </div>
+
+        <div class="benefit">
+          <h3>Specialty Options</h3>
+          <p>
+            Galaxy, metallic, silk, translucent, multi-color, and wood filaments are available.
+          </p>
+        </div>
+
+        <div class="benefit">
+          <h3>Made to Order</h3>
+          <p>
+            Printed after you select your size and color.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="container footer-wrap">
+
+    <div>
+      <strong>MoonWorks 3D</strong>
+      <p>Ideas made physical.</p>
+    </div>
+
+    <p>
+      <a href="mailto:support@moonworks3d.com">
+        support@moonworks3d.com
+      </a>
+    </p>
+
+    <p>
+      © 2026 MoonWorks 3D
+    </p>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+function calculateUnitPrice() {
+
+  const sizeSelect =
+    document.getElementById("size");
+
+  const sizeOption =
+    sizeSelect.options[sizeSelect.selectedIndex];
+
+  const basePrice =
+    parseFloat(sizeOption.dataset.base);
+
+  const specialtyUpcharge =
+    parseFloat(sizeOption.dataset.specialtyUpcharge);
+
+  const colorSelect =
+    document.getElementById("color");
+
+  const colorOption =
+    colorSelect.options[colorSelect.selectedIndex];
+
+  const isSpecialty =
+    colorOption.dataset.specialty === "1";
+
+  return basePrice + (isSpecialty ? specialtyUpcharge : 0);
+}
+
+
+function updatePrice() {
+
+  const quantity =
+    Math.max(
+      1,
+      parseInt(document.getElementById("quantity").value) || 1
+    );
+
+  const total =
+    calculateUnitPrice() * quantity;
+
+  document.getElementById("price").textContent =
+    "$" + total.toFixed(2);
+}
+
+
+function prepareOrder() {
+
+  const color =
+    document.getElementById("color").value;
+
+  if (!color) {
+
+    alert("Please choose a color.");
+
+    return;
+  }
+
+  alert(
+    "Your options are ready. We will connect this button to checkout next."
+  );
+}
+
+</script>
+
+</body>
+</html>
