@@ -1,1 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Ribbon Sorter | MoonWorks 3D</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .product-page {
+      padding: 70px 0;
+    }
+
+    .product-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .main-product-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background: #f4f4f4;
+      border-radius: 16px;
+      padding: 12px;
+    }
+
+    .thumbnail-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .thumbnail-row img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .thumbnail-row img:hover {
+      border-color: var(--cyan);
+    }
+
+    .product-details h1 {
+      font-size: 2.7rem;
+      margin: 0 0 8px;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--cyan);
+      margin: 15px 0;
+    }
+
+    .product-description {
+      color: var(--gray);
+    }
+
+    .option-group {
+      margin-top: 22px;
+    }
+
+    .option-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .option-group select,
+    .option-group input {
+      width: 100%;
+      padding: 12px;
+      background: var(--graphite);
+      color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .name-field {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .quantity-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .quantity-row input {
+      width: 80px;
+    }
+
+    .product-note {
+      margin-top: 22px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--gray);
+      background: var(--graphite);
+    }
+
+    .product-info-section {
+      margin-top: 60px;
+    }
+
+    @media (max-width: 800px) {
+      .product-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+
+    <a href="index.html" class="logo">
+      MoonWorks <span>3D</span>
+    </a>
+
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html#custom">Custom Prints</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <a href="shop.html" class="nav-button">
+      Shop
+    </a>
+
+  </div>
+</header>
+
+
+<main class="product-page">
+
+  <div class="container">
+
+    <div class="product-layout">
+
+      <!-- PRODUCT IMAGES -->
+
+      <div>
+
+        <img
+          id="mainImage"
+          class="main-product-image"
+          src="images/galaxy-neb-green-letters.png"
+          alt="MoonWorks 3D Ribbon Sorter"
+        >
+
+        <div class="thumbnail-row">
+
+          <img
+            src="images/galaxy-neb-green-letters.png"
+            onclick="changeImage(this.src)"
+            alt="Galaxy ribbon sorter"
+          >
+
+          <img
+            src="images/dual-color-red-blue-1.png"
+            onclick="changeImage(this.src)"
+            alt="Ribbon sorter numbered 1 through 18"
+          >
+
+          <img
+            src="images/dual-color-red-blue-2.png"
+            onclick="changeImage(this.src)"
+            alt="Ribbon sorter numbered 19 through 36"
+          >
+
+          <img
+            src="images/galaxy-neb-green-letters-bottom.png"
+            onclick="changeImage(this.src)"
+            alt="Custom name option"
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT DETAILS -->
+
+      <div class="product-details">
+
+        <p class="eyebrow">
+          FIBER SPLICING TOOLS
+        </p>
+
+        <h1>
+          Ribbon Sorter – Set of 2
+        </h1>
+
+        <div class="price" id="price">
+          $10.00
+        </div>
+
+        <p class="product-description">
+          Keep fiber-splicing ribbons organized, separated,
+          and easy to identify with this numbered Ribbon Sorter set.
+        </p>
+
+        <p class="product-description">
+          Each set includes two holders:
+          <strong>1–18</strong> and <strong>19–36</strong>.
+        </p>
+
+
+        <!-- COLOR TYPE -->
+
+        <div class="option-group">
+
+          <label for="colorType">
+            Holder Color Type
+          </label>
+
+          <select id="colorType" onchange="updatePrice()">
+
+            <option value="standard">
+              Standard Color — $10
+            </option>
+
+            <option value="specialty">
+              Specialty Color — $12
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- HOLDER COLOR -->
+
+        <div class="option-group">
+
+          <label for="holderColor">
+            Holder Color
+          </label>
+
+          <input
+            id="holderColor"
+            type="text"
+            placeholder="Example: Black, Red, Galaxy Green, Dual Color Red/Blue"
+          >
+
+        </div>
+
+
+        <!-- LETTERING COLOR -->
+
+        <div class="option-group">
+
+          <label for="letterColor">
+            Letter / Number Color
+          </label>
+
+          <input
+            id="letterColor"
+            type="text"
+            placeholder="Example: White, Green, Red, Yellow"
+          >
+
+        </div>
+
+
+        <!-- CUSTOM NAME -->
+
+        <div class="option-group">
+
+          <label for="customNameOption">
+            Custom Name
+          </label>
+
+          <select
+            id="customNameOption"
+            onchange="toggleName(); updatePrice();"
+          >
+
+            <option value="no">
+              No custom name
+            </option>
+
+            <option value="yes">
+              Add custom name — +$1
+            </option>
+
+          </select>
+
+          <div class="name-field" id="nameField">
+
+            <input
+              id="customName"
+              type="text"
+              maxlength="30"
+              placeholder="Enter name exactly as you want it printed"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- QUANTITY -->
+
+        <div class="option-group">
+
+          <label for="quantity">
+            Quantity
+          </label>
+
+          <div class="quantity-row">
+
+            <input
+              id="quantity"
+              type="number"
+              min="1"
+              value="1"
+              onchange="updatePrice()"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div style="margin-top:30px;">
+
+          <button
+            class="button primary"
+            style="border:none; cursor:pointer;"
+            onclick="prepareOrder()"
+          >
+            Add to Cart
+          </button>
+
+        </div>
+
+
+        <div class="product-note">
+
+          <strong>Shipping</strong>
+
+          <br>
+
+          Calculated at checkout. Ships via USPS within
+          the contiguous United States.
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- PRODUCT INFO -->
+
+    <section class="product-info-section">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          PRODUCT DETAILS
+        </p>
+
+        <h2>
+          Built for Fiber Splicing
+        </h2>
+
+      </div>
+
+      <div class="benefit-grid">
+
+        <div class="benefit">
+          <h3>Set of 2</h3>
+          <p>
+            Includes one holder numbered 1–18 and one numbered 19–36.
+          </p>
+        </div>
+
+        <div class="benefit">
+          <h3>Choose Your Colors</h3>
+          <p>
+            Choose the holder color and the letter/number color separately.
+          </p>
+        </div>
+
+        <div class="benefit">
+          <h3>Specialty Filaments</h3>
+          <p>
+            Galaxy, shiny, dual-color and translucent options are available.
+          </p>
+        </div>
+
+        <div class="benefit">
+          <h3>Personalize It</h3>
+          <p>
+            Add your name directly to the sorter for an additional $1.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="container footer-wrap">
+
+    <div>
+      <strong>MoonWorks 3D</strong>
+      <p>Ideas made physical.</p>
+    </div>
+
+    <p>
+      <a href="mailto:support@moonworks3d.com">
+        support@moonworks3d.com
+      </a>
+    </p>
+
+    <p>
+      © 2026 MoonWorks 3D
+    </p>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+function changeImage(src) {
+  document.getElementById("mainImage").src = src;
+}
+
+
+function toggleName() {
+
+  const option =
+    document.getElementById("customNameOption").value;
+
+  const field =
+    document.getElementById("nameField");
+
+  field.style.display =
+    option === "yes" ? "block" : "none";
+}
+
+
+function calculateUnitPrice() {
+
+  const colorType =
+    document.getElementById("colorType").value;
+
+  const customName =
+    document.getElementById("customNameOption").value;
+
+  let price =
+    colorType === "specialty" ? 12 : 10;
+
+  if (customName === "yes") {
+    price += 1;
+  }
+
+  return price;
+}
+
+
+function updatePrice() {
+
+  const unitPrice = calculateUnitPrice();
+
+  const quantity =
+    parseInt(document.getElementById("quantity").value) || 1;
+
+  const total =
+    unitPrice * quantity;
+
+  document.getElementById("price").textContent =
+    "$" + total.toFixed(2);
+}
+
+
+function prepareOrder() {
+
+  const holderColor =
+    document.getElementById("holderColor").value.trim();
+
+  const letterColor =
+    document.getElementById("letterColor").value.trim();
+
+  const customOption =
+    document.getElementById("customNameOption").value;
+
+  const customName =
+    document.getElementById("customName").value.trim();
+
+
+  if (!holderColor || !letterColor) {
+
+    alert(
+      "Please choose a holder color and a letter/number color."
+    );
+
+    return;
+  }
+
+
+  if (customOption === "yes" && !customName) {
+
+    alert(
+      "Please enter the custom name you want printed."
+    );
+
+    return;
+  }
+
+
+  alert(
+    "Your options are ready. We will connect this button to checkout next."
+  );
+}
+
+</script>
+
+</body>
+</html>
