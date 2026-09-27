@@ -1,7 +1,7 @@
 :root {
-  --black: #0b0d10;
-  --graphite: #171b22;
-  --gunmetal: #242a34;
+  --black: #12171f;
+  --graphite: #1c232d;
+  --gunmetal: #28313d;
   --blue: #5865f2;
   --cyan: #35cfe3;
   --white: #f5f7fa;
@@ -38,7 +38,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(11, 13, 16, 0.96);
+  background: rgba(18, 23, 31, 0.96);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(10px);
 }
@@ -101,7 +101,6 @@ a {
     radial-gradient(circle at 80% 20%, rgba(88, 101, 242, 0.20), transparent 34%),
     radial-gradient(circle at 15% 30%, rgba(53, 207, 227, 0.10), transparent 30%),
     var(--black);
-
   padding: 96px 0 88px;
 }
 
@@ -213,9 +212,8 @@ a {
   min-height: 458px;
   border-radius: 25px;
   background:
-    linear-gradient(rgba(11, 13, 16, 0.78), rgba(11, 13, 16, 0.95)),
+    linear-gradient(rgba(18, 23, 31, 0.78), rgba(18, 23, 31, 0.95)),
     var(--graphite);
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -230,13 +228,10 @@ a {
   border-radius: 24px;
   display: grid;
   place-items: center;
-
   font-size: 2.1rem;
   font-weight: 900;
-
   background: linear-gradient(135deg, var(--blue), var(--cyan));
   color: white;
-
   margin-bottom: 26px;
 }
 
@@ -459,7 +454,7 @@ details p {
 
 .site-footer {
   border-top: 1px solid var(--border);
-  background: #080a0d;
+  background: #10151c;
   padding: 34px 0;
 }
 
